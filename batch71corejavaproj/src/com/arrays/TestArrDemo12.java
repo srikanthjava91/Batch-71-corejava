@@ -10,7 +10,6 @@ public class TestArrDemo12 {
 		int[][] arr = new int[2][3];// 0 1 ---> 0 1 2 --> 6 elements
 
 //		System.out.println(arr.length);// Row size--> 2
-//		
 //		System.out.println(arr[0].length);//Column size --> 3
 //		System.out.println(arr[1].length);//Column size --> 3
 
@@ -22,6 +21,8 @@ public class TestArrDemo12 {
 		arr[1][1] = 50;
 		arr[1][2] = 60;
 
+		// First for loop representing rows
+		// second for loop representing columns
 //		for (int i = 0; i < arr.length; i++) {
 //			for (int j = 0; j < arr[i].length; j++) {
 //				System.out.print(arr[i][j] + " ");
@@ -29,12 +30,12 @@ public class TestArrDemo12 {
 //			System.out.println();
 //		}
 		
-		for(int[] arr1:arr) {
-			for(int a:arr1) {
+		
+		for(int a1[]:arr) {
+			for(int a:a1) {
 				System.out.print(a + " ");
-			}
+			} 
 			System.out.println();
 		}
 	}
-
 }
