@@ -1,126 +1,72 @@
 package com.oops02;
 
-import java.util.Scanner;
+//Sub Child Derived
+//Note we have 4 scenarios to create Objects for Parent child classes.
+public class PersonalLoan extends Loan {
 
-public class PersonalLoan {
-	static Scanner sc = new Scanner(System.in);
-	
-	
-	boolean validateAadhaar(String aadhaar) {
-	    return aadhaar.matches("\\d{12}");
-	}
-	
-	//AMIPC1234G
-	boolean validatePAN(String pan) {
-	    return pan.matches("[A-Z]{5}[0-9]{4}[A-Z]{1}");
-	}
-	
-	boolean validatePhone(String phone) {
-	    return phone.matches("[6-9]{1}[0-9]{9}");
-	}
-
-	double getCustomerSalary() {
-		System.out.println("Enter your salary ");
-		double salary = sc.nextDouble();
-		return salary;
-	}
-
-	int getCustomerAge() {
-		System.out.println("Enter your age : ");
-		int age = sc.nextInt();
-		return age;
-	}
-
-	int getCibilScore() {
-		System.out.println("Enter your Cibil Score ");
-		int cibil = sc.nextInt();
-		return cibil;
-	}
-
-	double roiInfo() {
-		double roi = 12.0;
-
-		int cibilScore = getCibilScore();
-
-		if (cibilScore >= 300 && cibilScore <= 599) {
-			System.out.println(
-					"Poor score; high risk for lenders, loan applications may be rejected or approved at high interest rates ");
-			roi = 11.0;
-		} else if (cibilScore >= 600 && cibilScore <= 699) {
-			System.out.println("Fair score; moderate risk, may face stricter loan terms");
-			roi = 10.0;
-		} else if (cibilScore >= 700 && cibilScore <= 749) {
-			System.out.println("Good score; better chances of loan approval with favorable interest rates");
-			roi = 9.0;
-		} else if (cibilScore >= 750 && cibilScore <= 900) {
-			System.out.println(
-					"Excellent score; lowest risk, easier loan approval, and potential for higher loan amounts at lower interest rates ");
-			roi = 8.0;
-		} else {
-			System.out.println("Invalid Cibil info ");
-		}
-
-		return roi;
-
-	}
-
-	String getAddressInfo() {
-		String address = "";
-
-		System.out.println("Enter flat number : ");
-		String flat = sc.next();
-
-		System.out.println("Plot name");
-		sc.nextLine();
-		String plot = sc.nextLine();
-
-		System.out.println("Enter Street Name : ");
-		String street = sc.nextLine();
-
-		System.out.println("Enter City Name: ");
-		String city = sc.nextLine();
-
-		System.out.println("Enter Pin code");
-		long pin = sc.nextLong();
-
-		System.out.println("Enter State : ");
-		sc.nextLine();
-		String state = sc.nextLine();
-
-		address = "Flat No : " + flat + ", Plot name : " + plot + ", Street : " + street + ", City : " + city
-				+ ", PIN : " + pin + ", State : " + state;
-
-		return address;
-	}
-	
-	void getPersonalLoanDocmentInfo(){
+	void getPersonalLoanDocmentInfo() {
 		System.out.println("All Personal Loan documents have been Verified  ");
+	}
+
+	@Override
+	String hello() {
+		return "Hello Java Srikanth";
 	}
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to Vcube banking Personal Loan Department");
 
+//		Scenario 1: By using Child Object & Child Reference 
+//		We can call both Parent & child class functionalities.
 		PersonalLoan pl = new PersonalLoan();
+
+//		Scenario 2: By using, Parent Object & Parent Reference 
+//		We can call only Parent class Functionalities.
+		Loan l1 = new Loan();
+
+//		Scenario 3: By using, Child Object with Parent Reference 
+//		We can call Only Parent class FUnctionalities.
+//		But we can call child functionalities with help of Overriding.(Dynamic Dispatching )
+
+//		Then why we need to Store Child Object in Parent Reference ? To Achieve Dynamic Dispatching  
+//		Dynamic Dispatching means, If the child class Override Parent class Functionalities then 
+//		by using Child Object parent reference we can access child functionalities only.
+		
+//		Q) Can we Store Child Object in Parent reference ..? Yes, this is called Up-casting
+//		By Using U-Casting, We will Achieve Abstraction.
+		Loan l2 = new PersonalLoan();
+		System.out.println(l2.hello());// Hello Srikanth --> Hello Java Srikanth
+		
+//		Q) Can we Store Parent Object in Child reference --> No 
+//		Type mismatch: cannot convert from Loan to PersonalLoan
+//		In Java, Down-Casting is not possible.
+		
+//		If we do Explicit Type-cast with Child class the code compiles successfully.
+//		but it throws java.lang.ClassCastException
+		PersonalLoan pl2 =(PersonalLoan)new Loan();
+		
+//		Object obj = new Loan();
+		
+		
+
+//		The method getPersonalLoanDocmentInfo() is undefined for the type Loan
+//		l1.getPersonalLoanDocmentInfo();
 
 		double salary = pl.getCustomerSalary();
 		int cibil = pl.getCibilScore();
 		int age = pl.getCustomerAge();
-		
+
 		System.out.println("Enter Aadhar Details : ");
 		String aadhar = sc.next();
-		
+
 		System.out.println("Enter PAN number ");
 		String pan = sc.next();
-		
+
 		System.out.println("Enter Phone numbe r: ");
 		String phone = sc.next();
-		
-		
 
-		if (salary >= 1000000.00 && (cibil >= 300 && cibil <= 900) && age >= 25 
-				&& pl.validateAadhaar(aadhar)
-				&& pl.validatePAN(pan)
-				&& pl.validatePhone(phone)) {
+		if (salary >= 1000000.00 && (cibil >= 300 && cibil <= 900) && age >= 25 && pl.validateAadhaar(aadhar)
+				&& pl.validatePAN(pan) && pl.validatePhone(phone)) {
 			System.out.println("Congratulations !!!! ");
 			System.out.println("You are Eligible for Personal Loan !");
 			System.out.println("Your Loan ROI is  :" + pl.roiInfo());
