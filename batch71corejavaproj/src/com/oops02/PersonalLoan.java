@@ -2,14 +2,14 @@ package com.oops02;
 
 //Sub Child Derived
 //Note we have 4 scenarios to create Objects for Parent child classes.
-public class PersonalLoan extends Loan {
+public class PersonalLoan extends LoanImpl {
 
 	void getPersonalLoanDocmentInfo() {
 		System.out.println("All Personal Loan documents have been Verified  ");
 	}
 
 	@Override
-	String hello() {
+	public String hello() {
 		return "Hello Java Srikanth";
 	}
 
@@ -22,7 +22,7 @@ public class PersonalLoan extends Loan {
 
 //		Scenario 2: By using, Parent Object & Parent Reference 
 //		We can call only Parent class Functionalities.
-		Loan l1 = new Loan();
+		Loan l1 = new LoanImpl();
 
 //		Scenario 3: By using, Child Object with Parent Reference 
 //		We can call Only Parent class FUnctionalities.
@@ -43,7 +43,7 @@ public class PersonalLoan extends Loan {
 		
 //		If we do Explicit Type-cast with Child class the code compiles successfully.
 //		but it throws java.lang.ClassCastException
-		PersonalLoan pl2 =(PersonalLoan)new Loan();
+		PersonalLoan pl2 =(PersonalLoan)new LoanImpl();
 		
 //		Object obj = new Loan();
 		

@@ -1,10 +1,17 @@
 package com.oops.mor;
 
+import java.io.IOError;
+import java.io.IOException;
+
 //RBI Guidelines  
 public class Loan {
-	
+
 	private void hello() {
 		System.out.println("Hello loan ");
+	}
+	
+	public void welcome() throws IOException{
+		System.out.println("Welcome to MOR with EX handling !!");
 	}
 
 	protected Object helloUser(String message) {
@@ -16,7 +23,7 @@ public class Loan {
 		return 600;
 	}
 
-	double roi() {
+	final double roi() {
 		return 10.5;
 	}
 

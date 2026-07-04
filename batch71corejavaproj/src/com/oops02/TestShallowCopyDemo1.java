@@ -46,15 +46,15 @@ public class TestShallowCopyDemo1 {
 		System.out.println("Student Name : " + s2.name);//Sekhar
 		System.out.println("Student Address :" + s2.address.city);//hyd
 		System.out.println("*******************************************");
-
+//
 		s2.name = "Srikanth";
 		s2.address.city = "Banglore";
 		System.out.println("Student ID : " + s2.id);// 101
 		System.out.println("Student Name : " + s2.name);// Srikanth
 		System.out.println("Student Address :" + s2.address.city);// Bangalore
-		System.out.println("*******************************************");
-		
-		
+//		System.out.println("*******************************************");
+//		
+//		
 		System.out.println("Student ID : " + s1.id);//101
 		System.out.println("Student Name : " + s1.name);//Sekhar
 		System.out.println("Student Address :" + s1.address.city);//Bangalore 
