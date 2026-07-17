@@ -22,7 +22,7 @@ public class TestBinarySearchDemo1 {
 
 		while (low <= high) {
 
-			int mid = low + -(high - low) / 2;// 2
+			int mid = low + (high - low) / 2;// 2
 
 			if (arr[mid] == key) {
 				return mid;
